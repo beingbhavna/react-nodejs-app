@@ -32,7 +32,33 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav-ul li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.nav-ul {
+  padding: 0px;
+  margin: 0px;
+  background-color: skyblue;
+}
+
+.nav-ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer {
+  padding-bottom: 0px;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  background-color: skyblue;
+  width: 100%;
 }
