@@ -18,3 +18,15 @@ const SignUp =()=>{
 }
 
 export default SignUp;
+
+
+
+// require('./db/config');
+// const userModel = require('./db/user')
+// const express = require('express');
+// const app = express();
+
+// app.post("/register",(req,resp)=>{
+//   resp.send("Connected");
+// })
+// app.listen(5600);
