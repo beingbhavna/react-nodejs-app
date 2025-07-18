@@ -85,3 +85,13 @@
   margin-left: 36%;
   background-color: darkseagreen;
 }
+
+.textRight {
+  text-align: right;
+}
+
+.logo {
+  float: left;
+  margin-left: 5px;
+  width: 41px;
+}
