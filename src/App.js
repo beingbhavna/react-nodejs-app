@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Nav from './components/navbar'
 import Footer from './components/footer';
@@ -6,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import SignUp from './components/signup';
 import PrivateComponent  from './components/private-component'
+import Login from './components/login'
 function App() {
   return (
     <div className="App">
@@ -20,8 +20,10 @@ function App() {
             <Route path="/update" element={<h1>Update Product</h1>} ></Route>
             <Route path="/logout" element={<h1>Logout</h1>} ></Route>
             <Route path="/profile" element={<h1>Profile</h1>} ></Route>
+
           </Route>
             <Route path="/signup" element={<SignUp />} ></Route>
+            <Route path="/login" element={<Login/>} ></Route>
         </Routes>
         {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
