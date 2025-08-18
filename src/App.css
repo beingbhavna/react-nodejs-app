@@ -69,7 +69,8 @@
   margin: 14px;
 }
 
-.register, .product{
+.register,
+.product {
   display: inline-grid;
 }
 
@@ -94,4 +95,11 @@
   float: left;
   margin-left: 5px;
   width: 41px;
+}
+
+.invalid-input {
+  font-size: 15px;
+  color: red;
+  margin-top: -16px;
+  margin-left: -36%;
 }
