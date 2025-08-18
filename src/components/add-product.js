@@ -1,0 +1,29 @@
+import React from "react";
+
+const AddProduct = () => {
+    const [name, setName] = React.useState('');
+    const [price, setPrice] = React.useState('');
+    const [category, setCategory] = React.useState('');
+    const [brand, setBrand] = React.useState('');
+    const addProduct = async () => {
+        const userId = localStorage.getItem('user')._id;
+        let result = await fetch("http://localhost:5600/add-product", {
+            method: 'Post',
+            body: JSON.stringify({ name, price, category, brand, userId }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        result = await result.json();
+        console.log(result);
+    }
+    return (
+        <div className='product'>
+            <h3>Add Product</h3>
+            <input type="text" placeholder="Enter Product Name" onChange={(e) => { setName(e.target.value) }} value={name} className='inputBox' />
+            <input type="text" placeholder="Enter Product Price" onChange={(e) => { setPrice(e.target.value) }} value={price} className="inputBox" />
+            <input type="text" placeholder="Enter Product Category" onChange={(e) => { setCategory(e.target.value) }} value={category} className="inputBox" />
+            <input type="text" placeholder="Enter Product Brand" onChange={(e) => { setBrand(e.target.value) }} value={brand} className="inputBox" />
+            <button className="button" onClick={addProduct}>Add Product</button>
+        </div>
+    )
+}
+export default AddProduct;
