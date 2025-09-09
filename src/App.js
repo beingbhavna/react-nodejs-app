@@ -4,9 +4,10 @@ import Footer from './components/footer';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import SignUp from './components/signup';
-import PrivateComponent  from './components/private-component'
+import PrivateComponent from './components/private-component'
 import Login from './components/login'
 import AddProduct from './components/add-product';
+import ProductList from './components/product-list';
 function App() {
   return (
     <div className="App">
@@ -16,15 +17,15 @@ function App() {
         <Routes>
 
           <Route element={<PrivateComponent />}>
-            <Route path="" element={<h1>Product</h1>} ></Route>
-            <Route path="/add" element={<AddProduct/>} ></Route>
+            <Route path="" element={<ProductList />} ></Route>
+            <Route path="/add" element={<AddProduct />} ></Route>
             <Route path="/update" element={<h1>Update Product</h1>} ></Route>
             <Route path="/logout" element={<h1>Logout</h1>} ></Route>
             <Route path="/profile" element={<h1>Profile</h1>} ></Route>
 
           </Route>
-            <Route path="/signup" element={<SignUp />} ></Route>
-            <Route path="/login" element={<Login/>} ></Route>
+          <Route path="/signup" element={<SignUp />} ></Route>
+          <Route path="/login" element={<Login />} ></Route>
         </Routes>
         {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

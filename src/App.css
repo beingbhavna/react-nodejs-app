@@ -103,3 +103,17 @@
   margin-top: -16px;
   margin-left: -36%;
 }
+
+.product-list {
+  margin-top: 3%;
+}
+
+.product-list ul li {
+  display: inline-block;
+  border: 1px solid;
+  padding: 8px;
+  width:150px
+}
+.product-list ul{
+  margin:0px;
+}
