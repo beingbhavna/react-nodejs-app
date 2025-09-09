@@ -10,7 +10,15 @@ export const ProductList = () => {
         result = await result.json();
         setProducts(result);
     }
-    console.log(products)
+    const deleteProduct = async (id) => {
+        let result = await fetch(`http://localhost:5600/product/${id}`, {
+            method: "Delete"
+        });
+        result = await result.json();
+        if (result) {
+            getProducts()
+        }
+    }
     return (
         <div className='product-list'>product-list
             <ul>
@@ -19,6 +27,7 @@ export const ProductList = () => {
                 <li>Name</li>
                 <li>Brand</li>
                 <li>Price</li>
+                <li>Operations</li>
             </ul>
             {
                 products.map((item, index) =>
@@ -28,11 +37,10 @@ export const ProductList = () => {
                         <li>{item.name}</li>
                         <li>{item.brand}</li>
                         <li>{item.price}</li>
+                        <li><button onClick={() => deleteProduct(item._id)}>Delete</button></li>
                     </ul>
-                )
-            }
+                )}
         </div>
-    )
-}
+    )}
 
 export default ProductList;
