@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 const UpdateProduct = () => {
     const [name, setName] = useState('');
@@ -8,6 +8,7 @@ const UpdateProduct = () => {
     const [brand, setBrand] = useState('');
     const [error, setError] = useState('');
     const params = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         getProductList();
@@ -22,11 +23,22 @@ const UpdateProduct = () => {
         setBrand(result.brand);
     }
 
-    const updateProductById = (id) => {
+    const updateProductById = async() => {
         console.log(name, price, category, brand)
-        let result = fetch(`http://localhost:5600/product/update/${id}`)
+        let result = await fetch(`http://localhost:5600/product/update/${params.id}`,{
+            method:"Put",
+            body:JSON.stringify({name,price,brand,category}),
+            headers:{
+                'Content-Type':"application/json"
+            }
+        });
+        result = await result.json();
+        console.log(result);
+        navigate('/');
     }
     return (
+        <>
+       
         <div className='product'>update-product
             <input type="text" placeholder="Enter Product Name" onChange={(e) => { setName(e.target.value) }} value={name} className='inputBox' />
             {error && !name && <span className="invalid-input">Enter Valid Name</span>}
@@ -36,8 +48,9 @@ const UpdateProduct = () => {
             {error && !category && <span className="invalid-input">Enter Valid Category</span>}
             <input type="text" placeholder="Enter Product Brand" onChange={(e) => { setBrand(e.target.value) }} value={brand} className="inputBox" />
             {error && !brand && <span className="invalid-input">Enter Valid Brand</span>}
-            <button className="button" onClick={updateProductById()}>Update Product</button>
+            <button className="button" onClick={updateProductById}>Update Product</button>
         </div>
+         </>
     )
 }
 
