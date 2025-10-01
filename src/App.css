@@ -112,8 +112,15 @@
   display: inline-block;
   border: 1px solid;
   padding: 8px;
-  width:150px
+  width: 150px
 }
-.product-list ul{
-  margin:0px;
+
+.product-list ul {
+  margin: 0px;
+}
+
+.search-box {
+  height: 30px;
+  width: 14%;
+  margin: 8px;
 }
