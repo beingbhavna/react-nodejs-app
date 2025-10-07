@@ -8,7 +8,11 @@ export const ProductList = () => {
     }, []);
 
     const getProducts = async () => {
-        let result = await fetch('http://localhost:5600/product-list');
+        let result = await fetch('http://localhost:5600/product-list',{
+            headers:{
+                authorization:JSON.parse(localStorage.getItem('token'))
+            }
+        });
         result = await result.json();
         setProducts(result);
     }

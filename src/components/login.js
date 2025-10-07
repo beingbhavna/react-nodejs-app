@@ -19,9 +19,10 @@ const Login = () => {
             headers: { 'Content-type': 'application/json' }
         });
         result = await result.json();
-        localStorage.setItem('user', JSON.stringify(result))
+        localStorage.setItem('user', JSON.stringify(result.user));
+        localStorage.setItem('token', JSON.stringify(result.auth));
         console.log(result);
-        if (result.name) {
+        if (result.auth) {
             navigate("/")
         } else {
             alert("Please Enter Valid Name")
