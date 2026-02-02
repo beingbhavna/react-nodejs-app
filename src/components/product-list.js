@@ -14,7 +14,7 @@ export const ProductList = () => {
             }
         });
         result = await result.json();
-        setProducts(result);
+        setProducts(Array.isArray(result) ? result : []);
     }
 
     const deleteProduct = async (id) => {
@@ -39,7 +39,7 @@ export const ProductList = () => {
                 }
             });
             result = await result.json();
-            if (result) {
+            if (Array.isArray(result) && result.length) {
                 setProducts(result);
             } else {
                 getProducts();
