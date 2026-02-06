@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -8,7 +9,7 @@ export const ProductList = () => {
     }, []);
 
     const getProducts = async () => {
-        let result = await fetch('http://localhost:5600/product-list',{
+        let result = await fetch(`${API_URL}/product-list`,{
             headers:{
                 authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
@@ -18,7 +19,7 @@ export const ProductList = () => {
     }
 
     const deleteProduct = async (id) => {
-        let result = await fetch(`http://localhost:5600/product/${id}`, {
+        let result = await fetch(`${API_URL}/product/${id}`, {
             method: "Delete",
             headers:{
                 authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
@@ -33,7 +34,7 @@ export const ProductList = () => {
     const serachProduct = async (event) => {
         let key = event.target.value;
         if (key) {
-            let result = await fetch(`http://localhost:5600/search/${key}`,{
+            let result = await fetch(`${API_URL}/search/${key}`,{
                 headers:{
                     authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }

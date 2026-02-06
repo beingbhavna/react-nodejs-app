@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams,useNavigate } from 'react-router-dom';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const UpdateProduct = () => {
     const [name, setName] = useState('');
@@ -15,7 +16,7 @@ const UpdateProduct = () => {
     },[])
     const getProductList = async () => {
         console.log(params);
-        let result = await fetch(`http://localhost:5600/product/${params.id}`,{
+        let result = await fetch(`${API_URL}/product/${params.id}`,{
             headers:{
                authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
             }
@@ -29,7 +30,7 @@ const UpdateProduct = () => {
 
     const updateProductById = async() => {
         console.log(name, price, category, brand)
-        let result = await fetch(`http://localhost:5600/product/update/${params.id}`,{
+        let result = await fetch(`${API_URL}/${params.id}`,{
             method:"Put",
             body:JSON.stringify({name,price,brand,category}),
             headers:{

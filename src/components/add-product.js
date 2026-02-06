@@ -11,8 +11,9 @@ const AddProduct = () => {
             setError(true);
             return false;
         } else {
+            const API_URL = process.env.REACT_APP_API_URL;
             const userId = localStorage.getItem('user')._id;
-            let result = await fetch("http://localhost:5600/add-product", {
+            let result = await fetch(`${API_URL}/add-product`, {
                 method: 'Post',
                 body: JSON.stringify({ name, price, category, brand, userId }),
                 headers: { 'Content-Type': 'application/json',

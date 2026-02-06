@@ -14,8 +14,9 @@ const SignUp = () => {
     });
 
     const collectData = async () => {
+        const API_URL = process.env.REACT_APP_API_URL;
         console.log(name, email, password);
-        let result = await fetch('http://localhost:5600/register', {
+        let result = await fetch(`${API_URL}/register`, {
             method: 'post',
             body: JSON.stringify({ name, email, password }),
             headers: { 'Content-Type': 'application/json' },

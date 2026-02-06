@@ -12,8 +12,9 @@ const Login = () => {
         }
     })
     const loginClick = async () => {
-        console.log(name, password)
-        let result = await fetch("http://localhost:5600/login", {
+        const API_URL = process.env.REACT_APP_API_URL;
+        console.log(name, password);
+        let result = await fetch(`${API_URL}/login`, {
             method: 'post',
             body: JSON.stringify({ name, password }),
             headers: { 'Content-type': 'application/json' }
